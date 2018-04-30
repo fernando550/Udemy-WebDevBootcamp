@@ -1,0 +1,39 @@
+<% include partials/header %>
+<!-- Master div -->    
+<div class='ui main text container' style='margin: 5%;'>
+    <!-- Page Title div -->   
+    <div class='ui huge header'>RESTful Blog App</div>
+    <div class='ui top attached segment'>
+        
+        <div class='ui divided items'>
+            <!-- for each loop -->   
+            <% blog.forEach(function(ablog){ %>
+                <!-- item div -->   
+                <div class='item'>
+                    <!-- image div -->   
+                    <div class='image'>
+                        <img src='<%= ablog.image %>'>
+                    </div>
+                    <!-- content div -->   
+                    <div class='content'>
+                        <a class='header' href='/blogs/<%=ablog._id%>'><%= ablog.title %></a>
+                        <div class='meta'>
+                            <span><%= ablog.created.toDateString() %></span>
+                        </div>
+                        <div class='description'>
+                            <p><%- ablog.body.substring(0,100) %>...</p>
+                        </div>
+                        <div class='extra'>
+                            <a href='/blogs/<%=ablog._id%>' class='ui blue mini button'>Read More</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            <% }); %>
+            
+        </div>
+    </div>
+    
+</div>
+    
+<% include partials/footer %>
